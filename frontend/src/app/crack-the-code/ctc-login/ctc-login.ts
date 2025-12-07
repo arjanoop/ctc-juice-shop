@@ -6,6 +6,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
 import {CommonModule} from "@angular/common";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-ctc-login',
@@ -23,7 +24,7 @@ export class CtcLogin {
   hideSignUpPassword = true;
   hideConfirmPassword = true;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private router: Router) {
     this.signInForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', [
@@ -42,17 +43,21 @@ export class CtcLogin {
     }, {
       validators: this.passwordMatchValidator
     });
+    // TODO: Uncomment the line below after enabling token validation on component initialization
+    // this.validateAndRedirect();
   }
 
   onLogin() {
     if (this.signInForm.valid) {
       console.log(this.signInForm.value);
+      this.redirectToHome();
     }
   }
 
   onSignup() {
     if (this.signUpForm.valid) {
       console.log(this.signUpForm.value);
+      this.redirectToHome();
     }
   }
 
@@ -80,5 +85,18 @@ export class CtcLogin {
     const password = group.get('password')?.value;
     const confirmPassword = group.get('confirmPassword')?.value;
     return password === confirmPassword ? null : {passwordMismatch: true};
+  }
+
+  private validateAndRedirect(){
+    //TODO: check for Token validity
+    this.redirectToHome()
+  }
+
+  private redirectToHome() {
+    this.router.navigate(['/ctc/home']).then((result:boolean)=>{
+      if(!result){
+        console.error("Token Expired!");
+      }
+    });
   }
 }
