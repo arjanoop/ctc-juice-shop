@@ -44,6 +44,8 @@ import { AccountingGuard, AdminGuard, LoginGuard } from './app.guard'
 import { NFTUnlockComponent } from './nft-unlock/nft-unlock.component'
 import { ScoreBoardComponent } from './score-board/score-board.component'
 import {CtcLogin} from "./crack-the-code/ctc-login/ctc-login";
+import {CrackTheCode} from "./crack-the-code/crack-the-code";
+import {CtcHome} from "./crack-the-code/ctc-home/ctc-home";
 
 const loadFaucetModule = async () => {
   const module = await import('./faucet/faucet.module')
@@ -61,8 +63,24 @@ const loadWeb3SandboxModule = async () => {
 // vuln-code-snippet start adminSectionChallenge scoreBoardChallenge web3SandboxChallenge
 const routes: Routes = [
   {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'ctc'
+  },
+  {
     path: 'ctc',
-    component: CtcLogin,
+    component: CrackTheCode,
+    children: [
+      {
+        path: '',
+        component: CtcLogin
+      },
+      {
+        path: 'home',
+        component: CtcHome,
+        // canActivate: [CtcAuthGuard]
+      }
+    ]
   },
   { // vuln-code-snippet neutral-line adminSectionChallenge
     path: 'administration', // vuln-code-snippet vuln-line adminSectionChallenge
