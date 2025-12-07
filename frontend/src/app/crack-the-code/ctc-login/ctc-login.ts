@@ -44,7 +44,7 @@ export class CtcLogin {
       validators: this.passwordMatchValidator
     });
     // TODO: Uncomment the line below after enabling token validation on component initialization
-    // this.validateAndRedirect();
+    this.validateAndRedirect();
   }
 
   onLogin() {

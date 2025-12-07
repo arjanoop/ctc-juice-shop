@@ -1,1 +1,67 @@
-<p>ctc-home works!</p>
+<mat-grid-list cols="4" rowHeight="150px" gutterSize="16px">
+  <mat-grid-tile colspan="3" rowspan="1" class="intro-tile">
+    <div class="intro-box">
+      <h2>CTC Dashboard</h2>
+      <p>Narrative-driven OWASP cybersecurity training platform.</p>
+      <p>Select a story below to begin your investigation.</p>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="1" rowspan="1" class="progress-tile">
+    <div class="progress-box">
+      <h3>Your Progress</h3>
+      <p><strong>Completed Missions</strong></p>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<h2 class="mission-label" style="--chars: 19">ON GOING MISSION</h2>
+<mat-grid-list cols="4" rowHeight="250px" gutterSize="16px">
+  <mat-grid-tile colspan="4" rowspan="1" class="ongoing-tile">
+    <div class="theme-grid">
+      <div class="theme-card" *ngFor="let theme of onGoing" (click)="openTheme(theme)" [class.coming-soon]="theme.status === 'coming_soon'">
+        <div class="theme-image-wrapper">
+          <img
+            [src]="theme.image"
+            [alt]="theme.title"
+            class="theme-image"
+          />
+          <div class="theme-title-overlay">
+            {{ theme.title }}
+          </div>
+        </div>
+        <mat-progress-bar *ngIf="theme.status === 'active'" mode="determinate" [value]="70">
+        </mat-progress-bar>
+      </div>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<h2 class="available-to-explore-mission-label">AVAILABLE TO EXPLORE</h2>
+<mat-grid-list cols="4" rowHeight="250px" gutterSize="16px">
+  <mat-grid-tile colspan="4" rowspan="1" class="themes-tile">
+    <div class="theme-grid">
+      <div
+        class="theme-card"
+        *ngFor="let theme of themes"
+        (click)="openTheme(theme)"
+        [class.coming-soon]="theme.status === 'coming_soon'"
+      >
+        <div class="theme-image-wrapper">
+          <img
+            [src]="theme.image"
+            [alt]="theme.title"
+            class="theme-image"
+          />
+          <div class="theme-title-overlay">
+            {{ theme.title }}
+          </div>
+          <div class="locked-overlay" *ngIf="theme.status === 'coming_soon'">
+            Coming Soon
+          </div>
+        </div>
+        <mat-progress-bar *ngIf="theme.status === 'active'" mode="determinate" [value]="0">
+        </mat-progress-bar>
+      </div>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>
