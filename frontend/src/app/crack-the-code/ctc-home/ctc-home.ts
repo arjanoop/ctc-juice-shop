@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {MatGridListModule} from "@angular/material/grid-list";
 import {CtcMissions} from "../services/ctc-missions/ctc-missions";
 import {missionTheme} from "../constants";
@@ -11,31 +11,32 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {CtcMissionProgress} from "../ctc-mission-progress/ctc-mission-progress";
 
 @Component({
-  selector: 'app-ctc-home',
-  imports: [MatGridListModule, CommonModule, MatCardModule, MatButtonModule, MatIconModule, NgOptimizedImage, MatProgressBarModule, CtcMissionProgress],
-  standalone: true,
-  templateUrl: './ctc-home.html',
-  styleUrl: './ctc-home.scss',
+    selector: 'app-ctc-home',
+    imports: [MatGridListModule, CommonModule, MatCardModule, MatButtonModule, MatIconModule, NgOptimizedImage, MatProgressBarModule, CtcMissionProgress],
+    standalone: true,
+    templateUrl: './ctc-home.html',
+    styleUrl: './ctc-home.scss',
 })
 export class CtcHome {
-  themes: missionTheme[] = [];
-  onGoing: missionTheme[] = [];
-  constructor(private ctcMissions: CtcMissions, private router: Router) {
-    this.onGoing = [this.getThemes()[0]]
-    this.themes = this.getThemes().slice(1, 6);
-  }
+    themes: missionTheme[] = [];
+    onGoing: missionTheme[] = [];
 
-  private getThemes():missionTheme[] {
-    return this.ctcMissions.getAllThemes()
-  }
-
-  openTheme(theme: missionTheme): void {
-    if (theme.status === 'coming_soon') {
-      return; // prevent navigation
+    constructor(private ctcMissions: CtcMissions, private router: Router) {
+        this.onGoing = [this.getThemes()[0]]
+        this.themes = this.getThemes().slice(1, 6);
     }
 
-    console.log('Opening theme:', theme.title);
-    // Example route: /theme/:id
-    // this.router.navigate(['/theme', theme.id]);
-  }
+    private getThemes(): missionTheme[] {
+        return this.ctcMissions.getAllThemes()
+    }
+
+    openTheme(theme: missionTheme): void {
+        if (theme.status === 'coming_soon') {
+            return;
+        } else {
+            this.router.navigate(['/ctc/mission'], {
+                queryParams: {id: theme.id}
+            });
+        }
+    }
 }
