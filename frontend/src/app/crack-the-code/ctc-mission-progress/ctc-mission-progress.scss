@@ -1,0 +1,20 @@
+/* ✅ Floating radar - NO black box */
+.radar-wrapper {
+  position: fixed;
+  top: 100px;
+  right: 100px;
+  width: 500px;
+  height: 500px;
+  z-index: 999;
+  background: transparent;   /* ✅ REMOVED BLACK */
+  border-radius: 0;
+  box-shadow: none;          /* ✅ REMOVED SHADOW */
+  padding: 0;
+  pointer-events: auto;
+}
+
+/* ✅ Chart fills container */
+.radar-chart {
+  width: 90%;
+  height: 90%;
+}

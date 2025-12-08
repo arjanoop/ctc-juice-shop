@@ -47,7 +47,13 @@ import { NgxTextDiffModule } from '@winarg/ngx-text-diff';
 import { GalleryModule } from 'ng-gallery';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-
+import * as echarts from 'echarts/core';
+import { RadarChart } from 'echarts/charts';
+import {
+    TooltipComponent,
+    LegendComponent
+} from 'echarts/components';
+import { CanvasRenderer } from 'echarts/renderers';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { Routing } from './app/app.routing';
@@ -83,11 +89,18 @@ import { ProductService } from './app/Services/product.service';
 import { HIGHLIGHT_OPTIONS, HighlightModule } from 'ngx-highlightjs';
 import { RequestInterceptor } from './app/Services/request.interceptor';
 import { HTTP_INTERCEPTORS, HttpClient, withInterceptorsFromDi, provideHttpClient } from '@angular/common/http';
+import {provideEchartsCore} from "ngx-echarts";
 
 if (environment.production) {
   enableProdMode()
 }
 
+echarts.use([
+    RadarChart,
+    TooltipComponent,
+    LegendComponent,
+    CanvasRenderer
+]);
 bootstrapApplication(AppComponent, {
     providers: [
         importProvidersFrom(BrowserModule, Routing, TranslateModule.forRoot({
@@ -114,6 +127,7 @@ bootstrapApplication(AppComponent, {
                 }
             }
         },
+        provideEchartsCore({ echarts }),
         ProductService,
         ConfigurationService,
         AdministrationService,

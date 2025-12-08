@@ -39,6 +39,7 @@
     "canvas-confetti": "^1.9.3",
     "codemirror": "^5.65.14",
     "codemirror-solidity": "^0.2.5",
+    "echarts": "^5.6.0",
     "ethers": "^5.7.2",
     "file-saver": "^2.0.2",
     "flag-icons": "^6.9.2",
@@ -50,6 +51,7 @@
     "ng-qrcode": "^20.0.0",
     "ng2-file-upload": "^9.0.0",
     "ngx-clipboard": "^15.1.0",
+    "ngx-echarts": "^20.0.2",
     "ngx-highlightjs": "^6.1.2",
     "ngx-window-token": "^6.0.0",
     "ngy-cookie": "^6.0.0",
@@ -64,6 +66,7 @@
   },
   "devDependencies": {
     "@angular/language-service": "^20.1.0",
+    "@eslint/js": "9.33.0",
     "@types/express-serve-static-core": "^4.17.9",
     "@types/file-saver": "^2.0.1",
     "@types/jasmine": "~5.1.0",
@@ -71,7 +74,6 @@
     "@types/jwt-decode": "^2.2.1",
     "@types/node": "^20.17.19",
     "@types/socket.io-client": "^1.4.33",
-    "@eslint/js":"9.33.0",
     "angular-eslint": "^20.1.0",
     "eslint": "^9.33.0",
     "jasmine": "^5.1.0",
@@ -85,7 +87,7 @@
     "stylelint": "^13.8.0",
     "stylelint-config-sass-guidelines": "^7.1.0",
     "stylelint-scss": "^3.18.0",
-    "typescript-eslint": "^8.42.0",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "typescript-eslint": "^8.42.0"
   }
 }

@@ -1,15 +1,14 @@
 <mat-grid-list cols="4" rowHeight="150px" gutterSize="16px">
-  <mat-grid-tile colspan="3" rowspan="1" class="intro-tile">
+  <mat-grid-tile colspan="2" rowspan="1" class="intro-tile">
     <div class="intro-box">
       <h2>CTC Dashboard</h2>
-      <p>Narrative-driven OWASP cybersecurity training platform.</p>
+      <p>Narrative-driven OWASP Juice Shop.</p>
       <p>Select a story below to begin your investigation.</p>
     </div>
   </mat-grid-tile>
-  <mat-grid-tile colspan="1" rowspan="1" class="progress-tile">
+  <mat-grid-tile colspan="2" rowspan="1" class="progress-tile">
     <div class="progress-box">
-      <h3>Your Progress</h3>
-      <p><strong>Completed Missions</strong></p>
+      <app-ctc-mission-progress></app-ctc-mission-progress>
     </div>
   </mat-grid-tile>
 </mat-grid-list>

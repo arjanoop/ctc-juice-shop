@@ -8,10 +8,11 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {Router} from "@angular/router";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {CtcMissionProgress} from "../ctc-mission-progress/ctc-mission-progress";
 
 @Component({
   selector: 'app-ctc-home',
-  imports: [MatGridListModule, CommonModule, MatCardModule, MatButtonModule, MatIconModule, NgOptimizedImage, MatProgressBarModule],
+  imports: [MatGridListModule, CommonModule, MatCardModule, MatButtonModule, MatIconModule, NgOptimizedImage, MatProgressBarModule, CtcMissionProgress],
   standalone: true,
   templateUrl: './ctc-home.html',
   styleUrl: './ctc-home.scss',
